@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:PizzaIllico.Mobile.ViewModels;assembly=PizzaIllico.Mobile"
+             x:Class="PizzaIllico.Mobile.Pages.ConnexionPage"
+             x:DataType="viewModels:ConnexionPageModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Connexion" TextColor="Black" FontSize="36" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
+                <ActivityIndicator IsRunning="{Binding Running}" Color="Black" ></ActivityIndicator>
+            </StackLayout>
+            <Label Text="Identifiant :" Margin="20,80,0,0"/>
+            <Entry Text="{Binding Login}" Margin="10,0,10,0"/>
+            
+            <Label Text="Mot de passe :" Margin="20,10,0,0"/>
+            <Entry Text="{Binding Password}" IsPassword="True" Margin="10,0,10,0"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Se souvenir de moi " Margin="20,0,0,0"></Label>
+                <CheckBox IsChecked="{Binding IsCheck}"></CheckBox>
+            </StackLayout>
+            
+            <Button Command="{Binding Connexion}" Text="Se connecter" Margin="30,20,30,0" BackgroundColor="#cfffbb" BorderColor="Black" BorderWidth="1"/>
+            <Button Command="{Binding Inscription}" Text="S'inscrire" Margin="30,10,30,0" BorderColor="Black" BorderWidth="1"/>
+            <Label TextColor="Red"  Text="{Binding Erreur}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

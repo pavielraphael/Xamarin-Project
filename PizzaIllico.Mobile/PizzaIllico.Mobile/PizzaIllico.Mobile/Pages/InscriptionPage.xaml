@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaIllico.Mobile.Pages.InscriptionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Inscription" TextColor="Black" FontSize="36" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
+                <ActivityIndicator IsRunning="{Binding Running}" Color="Black" ></ActivityIndicator>
+            </StackLayout>
+            <Label Text="Email :" Margin="20,20,0,0"/>
+            <Entry Text="{Binding Email}" Margin="10,0,10,0"/>
+
+            <Label Text="Nom :" Margin="20,10,0,0"/>
+            <Entry Text="{Binding Nom}" Margin="10,0,10,0"/>
+
+            <Label Text="Prénom :" Margin="20,10,0,0"/>
+            <Entry Text="{Binding Prenom}" Margin="10,0,10,0"/>
+
+            <Label Text="Téléphone :" Margin="20,10,0,0"/>
+            <Entry Text="{Binding Telephone}" Margin="10,0,10,0"/>
+
+            <Label Text="Mot de passe :" Margin="20,10,0,0"/>
+            <Entry Text="{Binding MotDePasse}" Margin="10,0,10,0"/>
+
+            <Button Command="{Binding Inscription}" Text="Inscription"  Margin="30,20,30,0" BackgroundColor="#cfffbb" BorderColor="Black" BorderWidth="1"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

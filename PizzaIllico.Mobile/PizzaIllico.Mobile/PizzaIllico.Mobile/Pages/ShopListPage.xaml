@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<forms:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+                       xmlns:viewModels="clr-namespace:PizzaIllico.Mobile.ViewModels;assembly=PizzaIllico.Mobile"
+                       xmlns:pizzas="clr-namespace:PizzaIllico.Mobile.Dtos.Pizzas;assembly=PizzaIllico.Mobile"
+                       xmlns:extensions="clr-namespace:PizzaIllico.Mobile.Extensions;assembly=PizzaIllico.Mobile"
+                       x:Class="PizzaIllico.Mobile.Pages.ShopListPage"
+                       x:DataType="viewModels:ShopListViewModel"
+                       Title="Shops">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Liste des restaurants" TextColor="Black" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,0"></Label>
+            <ActivityIndicator IsRunning="{Binding Running}" Color="Black" ></ActivityIndicator>
+            <Button Command="{Binding Disconnect}" Text="Se déconnecter" Margin="30,5,10,0" BackgroundColor="#ffaaaa" BorderColor="Black" BorderWidth="1"/>
+
+        </StackLayout>
+
+        <ListView ItemsSource="{Binding Shops}"
+                  SelectionMode="None"
+                  >
+            <ListView.Behaviors>
+                <extensions:ListViewItemTappedBehavior Command="{Binding SelectedCommand}"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:DataType="pizzas:ShopItem">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold"
+                                    />
+
+                            <Label FontSize="11">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="au {0}  ({1:F0} mètres)">
+                                        <Binding Path="Address" />
+                                        <Binding Path="Distance" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Command="{Binding GoMap}" Text="Visualiser la carte" Margin="30,0,30,10" BorderColor="Black" BackgroundColor="#99f2ff" BorderWidth="1"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Command="{Binding GetUser}" Text="Modifier vos informations" Margin="5,0,5,10" BorderColor="Black" BorderWidth="1" FontSize="12"/>
+            <Button Command="{Binding prevCommands}" Text="Commandes déjà passées" Margin="5,0,5,10" BorderColor="Black" BorderWidth="1"  FontSize="12"/>
+        </StackLayout>
+    </StackLayout>
+</forms:BaseContentPage>

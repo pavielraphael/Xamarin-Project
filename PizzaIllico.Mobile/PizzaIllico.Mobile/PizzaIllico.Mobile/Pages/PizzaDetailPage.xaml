@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaIllico.Mobile.Pages.PizzaDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="{Binding Name, StringFormat='{0:F0}'}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
+                <ActivityIndicator IsRunning="{Binding Running}" Color="Black" ></ActivityIndicator>
+            </StackLayout>
+            <Image Source="{Binding ImageSource}" HeightRequest="300" WidthRequest="300" ></Image>
+
+            <Label Text="" TextColor="#1e1e1e"/>
+
+            <Label Text="{Binding Price, StringFormat='Prix : {0:F0} €'}" TextColor="Black" FontAttributes="Bold"/>
+
+            <Label Text="{Binding Description, StringFormat='Description : {0:F0}'}"/>
+
+            <Label Text="{Binding Hs}" TextColor="{Binding HsColor}"/>
+
+            <Button Command="{Binding AjouterPizza}"  Text="Ajouter au panier"   Margin="30,20,30,0" BackgroundColor="#cfffbb" BorderColor="Black" BorderWidth="1"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
