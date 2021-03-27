@@ -21,7 +21,13 @@ namespace PizzaIllico.Mobile.ViewModels
         private string _prenom;
         private string _telephone;
         private string _motdepasse;
+        private bool _running;
 
+        public bool Running
+        {
+            get => _running;
+            set => SetProperty(ref _running, value);
+        }
         public string Email { get => _email;
             set => SetProperty(ref _email, value);
         }
@@ -54,6 +60,8 @@ namespace PizzaIllico.Mobile.ViewModels
 
         public async void validerInscription(Object obj)
         {
+            Running = true;
+
             IPizzaApiService service = DependencyService.Get<IPizzaApiService>();
 
             string myJson = "{'client_id': 'MOBILE', 'client_secret': 'UNIV','email':'"+Email+"',  'first_name': '"+ Nom +"',  'last_name': '"+ Prenom +"',  'phone_number': '"+ Telephone +"',  'password': '"+ MotDePasse +"'}";
@@ -63,12 +71,15 @@ namespace PizzaIllico.Mobile.ViewModels
             if (rep["is_success"].ToString() == "True")
             {
                 Console.WriteLine($"Appel HTTP : {response}");
+                Running = false;
                 await App.Current.MainPage.DisplayAlert("Confirmation", "Votre compte a été enregistré avec succès.", "OK");
                 await NavigationService.PushAsync<Pages.ConnexionPage>();
             }
             else
             {
+                Running = false;
                 await App.Current.MainPage.DisplayAlert("Attention", rep["error_message"].ToString(), "OK");
+
             }
         }
     }

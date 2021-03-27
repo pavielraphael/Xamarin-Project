@@ -21,7 +21,7 @@
             <Entry Text="{Binding Telephone}" Margin="10,0,10,0"/>
 
             <Label Text="Mot de passe :" Margin="20,10,0,0"/>
-            <Entry Text="{Binding MotDePasse}" Margin="10,0,10,0"/>
+            <Entry Text="{Binding MotDePasse}" IsPassword="True" Margin="10,0,10,0"/>
 
             <Button Command="{Binding Inscription}" Text="Inscription"  Margin="30,20,30,0" BackgroundColor="#cfffbb" BorderColor="Black" BorderWidth="1"/>
         </StackLayout>
